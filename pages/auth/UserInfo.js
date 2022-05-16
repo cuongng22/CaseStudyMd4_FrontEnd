@@ -2,7 +2,7 @@ let currentUser = JSON.parse(localStorage.getItem("currentUser"));
 function registerUserInfo() {
     let name = $(`#name`).val();
     let age = $(`#age`).val();
-    let sex = $(`#name`).val();
+    let sex = $(`#sex`).val();
     if (sex === 1) {
         sex = "Nam"
     } else {

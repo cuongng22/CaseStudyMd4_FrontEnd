@@ -237,56 +237,7 @@
         </div>
     </div><!-- topbar -->
 
-    <section>
-        <div class="feature-photo">
-                <div id="background-userInfo"></div>
-            <form class="edit-phto">
-                <i class="fa fa-camera-retro"></i>
-                <label class="fileContainer" data-bs-toggle="modal" data-bs-target="#edit_background">
-                    Edit Cover Photo
-                </label>
-                <br>
-                <label class="fileContainer" data-bs-toggle="modal" data-bs-target="#okok">
-                    Show Background
-                </label>
-            </form>
-            <div class="container-fluid">
-                <div class="row merged">
-                    <div class="col-lg-2 col-sm-2">
-                        <div class="user-avatar">
-                                <div id="avatar-userinfo"></div>
-                                <form class="edit-phto">
-                                    <i class="fa fa-camera-retro"></i>
-                                    <label class="fileContainer" data-bs-toggle="modal" data-bs-target="#edit_avatar">
-                                        Edit Display Avatar
-                                    </label>
-                                    <br>
-                                    <label class="fileContainer" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                    Show Avatar
-                                    </label>
-                                </form>
-                        </div>
-                    </div>
-                    <div class="col-lg-10 col-sm-9">
-                        <div class="timeline-info">
-                            <ul>
-                                <li class="admin-name">
-                                    <h5 id="userInfo-name"></h5>
-                                </li>
-                                <li>
-                                    <a class="" href="time-line.html" title="" data-ripple="">trang chủ</a>
-                                    <a class="" href="../index/friends.html" title="" data-ripple="">bạn bè</a>
-                                    <a class="" href="timeline-videos.html" title="" data-ripple="">nhóm</a>
-                                    <a class="" href="timeline-friends.html" title="" data-ripple="">bài viết</a>
 
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section><!-- top area -->
 
     <section>
         <div class="gap gray-bg">
@@ -307,7 +258,7 @@
                                             </li>
                                             <li>
                                                 <i class="ti-mouse-alt"></i>
-                                                <a href="inbox.html" title="">Bạn bè</a>
+                                                <a href="friends.html" title="">Bạn bè</a>
                                             </li>
                                             <li>
                                                 <i class="ti-files"></i>
@@ -319,40 +270,39 @@
                                 </aside>
                             </div>
                             <div class="col-lg-6">
-
                                 <div class="central-meta">
-                                    <div class="new-postbox">
-                                        <figure>
-                                            <div id="avatar_user2" ></div>
-                                        </figure>
-                                        <div class="newpst-input">
-                                            <form>
-                                                <textarea rows="2" id="contentPostUser" placeholder="Hãy viết gì đó"></textarea>
-                                                <div class="attachments">
-                                                    <ul>
-                                                        <li>
-                                                            <select id="select_status">
-                                                                <option value="1">Công khai</option>
-                                                                <option value="2">Bạn bè</option>
-                                                            </select>
-                                                        </li>
-                                                        <li>
-                                                                <input type="file" name="file[]" multiple id="image_postUser">
-                                                        </li>
-                                                        <li>
-                                                            <button type="button" onclick="createNewPost()">Đăng</button>
-                                                        </li>
-                                                    </ul>
+                                    <div class="frnds">
+                                    <ul class="nav nav-tabs">
+                                        <li class="nav-item"><a class="active" href="#frends" data-toggle="tab">Nhóm đã tham gia</a> <span id="totalgr"></span></li>
+                                        <li class="nav-item"><a class="" href="#frends-req" data-toggle="tab">Gợi ý vào nhóm</a><span id="requestGr"></span></li>
+                                    </ul>
+
+                                    <!-- Tab panes -->
+                                    <div class="tab-content">
+                                        <div class="tab-pane active fade show " id="groups" >
+                                            <ul class="nearby-contct">
+                                                <li>
+                                                <div class="nearly-pepls">
+                                                    <figure>
+                                                        <a href="time-line.html" title=""><img src="images/resources/group3.jpg" alt=""></a>
+                                                    </figure>
+                                                    <div class="pepl-info">
+                                                        <h4><a href="time-line.html" title="">SEO Zone</a></h4>
+                                                        <span>Public group</span>
+                                                        <em>32k Members</em>
+                                                        <a href="#" title="" class="add-butn" data-ripple="">join now</a>
+                                                    </div>
                                                 </div>
-                                            </form>
+                                            </li>
+                                            </ul>
                                         </div>
                                     </div>
-                                </div>
-                                <div id="showPostUserInAbout">
+                                    </div>
 
-                                </div>
-                            </div><!-- centerl meta -->
 
+
+                                </div><!-- photos -->
+                                </div>
                             <div class="col-lg-3">
                                 <aside class="sidebar static">
 

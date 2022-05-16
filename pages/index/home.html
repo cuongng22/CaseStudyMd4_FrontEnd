@@ -1,23 +1,173 @@
 <!DOCTYPE html>
 <html lang="en">
 
-
 <head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="" />
     <meta name="keywords" content="" />
-    <title>Winku Social Network Toolkit</title>
+    <title>Bo cuong c12</title>
     <link rel="icon" href="images/fav.png" type="image/png" sizes="16x16">
-
     <link rel="stylesheet" href="css/main.min.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/color.css">
     <link rel="stylesheet" href="css/responsive.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
 </head>
 <body>
-<!--<div class="se-pre-con"></div>-->
+<div class="modal fade" id="edit_password" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLaabel123">Đổi mật khẩu</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="oldpassword">Mật khẩu cũ</label>
+                    <input class="form-control" id="oldpassword" type="password">
+                </div>
+                <div class="form-group">
+                    <label for="password">Mật khẩu mới</label>
+                    <input class="form-control" id="password" type="password">
+                </div>
+                <div class="form-group">
+                    <label for="newpassword">Xác nhận mật khẩu mới</label>
+                    <input class="form-control" id="newpassword" type="password">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="password()">Save </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="edit_userInfo" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel123">Thông tin cá nhân</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="name">Họ Tên</label>
+                    <input class="form-control" id="name" type="text">
+                </div>
+                <div class="form-group">
+                    <label for="age">Tuổi</label>
+                    <input class="form-control" id="age"
+                           type="text">
+                </div>
+                <div class="form-group">
+                    <label for="sex">Giới tính</label>
+                    <select class="text" type="text" id="sex">
+                        <option disabled selected>Vui lòng chọn</option>
+                        <option value="1">Nam</option>
+                        <option value="2">Nữ</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="address">Địa chỉ</label>
+                    <input class="form-control" id="address" type="text">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="editUserInfo()">Save </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="edit_avatar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Edit Avatar</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <label >Avatar</label>
+                    <div id="modal_avt"></div>
+                    <input type="file" id="edit_avt">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="editAvatar()">Save </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackd233ropLabel">Avatar</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <div id="show_Avt"></div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="edit_background" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="example123ModalLabel">Edit Background</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <label >Background</label>
+                    <div id="modal_bgr"></div>
+                    <input type="file" id="edit_bgr">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="editBackground()">Save </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="okok" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBaaaackd233ropLabel">Background</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <div id="show_Bgr"></div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="theme-layout">
 
     <div class="responsive-header">
@@ -38,43 +188,11 @@
                 <a href="#/" class="fa fa-search"></a>
             </form>
         </div>
-        <nav id="menu" class="res-menu">
-            <ul>
-                <li><span>Trang chủ</span></li>
-                <li><span>Bạn bè</span></li>
-                <li><span>Thông tin tài khoản</span></li>
-                <li><span>Nhóm</span></li>
-            </ul>
-        </nav>
-        <nav id="shoppingbag">
-            <div>
-                <div class="">
-                    <h4 class="panel-title">Tài khoản</h4>
-                    <form method="post">
-                        <div class="setting-row">
-                            <span>Thông tin tài khoản</span>
-                            <input type="checkbox" id="switch6" />
-                            <label for="switch6" data-on-label="ON" data-off-label="OFF"></label>
-                        </div>
-                        <div class="setting-row">
-                            <span>Đổi mật khẩu</span>
-                            <input type="checkbox" id="switch7" />
-                            <label for="switch7" data-on-label="ON" data-off-label="OFF"></label>
-                        </div>
-                        <div class="setting-row">
-                            <span>Đăng xuất</span>
-                            <input type="checkbox" id="switch8" />
-                            <label for="switch8" data-on-label="ON" data-off-label="OFF"></label>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </nav>
     </div><!-- responsive header -->
 
     <div class="topbar stick">
         <div class="logo">
-            <a title="" href="newsfeed.html"><img src="images/logo.png" alt=""></a>
+            <a title="" href="home.html"><img  height="50" width="50" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHsAAAB7CAMAAABjGQ9NAAAAY1BMVEUYd/L///8QdfI2gfMAbPEAcfK1z/p7qfeqx/nV5PwAafH09/660voAc/IAb/L4+//B1vvm7v2iwvlsoPZVlPU4hvTI2/temfXe6v3I2PscevKGsfcmfvPr9P5lnPVGjvSXufdaj3OUAAAFK0lEQVRogcWbbbeiIBCAiaRrJpiZ5VW79f9/5aJlaQEzA3R2Pu2eYz6XAYd5ZSuyXLb5ofu71pwNwuvrX3fItxf6ixjp6d02rXomhBKS39EazqX+v2B9lW5332KXm6pmSjyhS+FcKFZXeRmfvcurPrFxZ/ykr3Ls6nHspusz4cS+RGR910Rjn45o8IQ/nqKw93UiSeRBZFLvg9mno6KTR7oC1+5ml5X0I490WbkPvYtdpEy4D7ZbuGBp4cdujlkA+C7Z0XHk7ezUc6OXIlVKZhfnJETdL+HJ2aZ3C7tZ075ol4i1Re9m9m8bQ9+TyPYXz96oOPqehKsNln1IopIHSQ44dhcfreEdhv0VtBH+wf6Cwh/wD7W/szffQmv4+4F7Y/+qr6EZU78udtN6f1ycDQ6V8+e8bezsYu1lUrSXmGW8r69t2+p/ZYmQ0ujZyXVhZZ89DClPRP1zaMqLfm1R7MqyOaXdz3ndmh4WZxs7pZ8zqepbY7orisa48mR+q83YDd2Sqnpju6R2RjZXsy1/sYsjVeOSHexuiZnNxPH1kxc7pXopot5ayVY2y15af7JLIpmJq4NsZzP2dCCf7IqocXF0ou1sUb2zT5J20GQNRF1WNpeT3z6xr1Sr4tprt87lpLEHe0/UeHID0A42U/sFu6Ytm9cunx9iy3rOPhEtWpZDaBebJacZ+0hc9hpctpP92PGR3RDNigJ3281mWfNkd8STliHyCk626Cb2rqehWQujV4UzN9PvHuycqHJh8Hcfi81vk3ROWzUe1oFNNafmKEMbiWuWqEnc7xwNq2aXVJULo00rKkpepi9Hdk78uDk3pTKKiuTiJvnIpqrcfNSIMcWgdLba1URXifemU7amvYXre5Cttm6n2vCztemcEYMKri9CtkqpoYiRfaO+RaWaTd5uI5t8/+sNZ6ue6hkb2cTtHk8Nu1C3OxZbk7fkOCgOW1solv83ds4O5Ig7ElsdGPXujrfujv2RQ+5IbPnHruQfRWLzK6Na83jsmvx1R2N7kOOxcaKSuWSm+7vNkqVE+lvEbbMQU1CSLx/Z7Ndx2AkUc5qEfoajsXeYeB7xiA8bEWZxzPftw4adX/19I+yaDxv2obRdQ9hzH/YPeEVpe464x3zYsDr1PYa4v33Y4EuH+xvht3iwS/it2m9B+GsebEQCR/trCD/Vgw2XXQY/FeGfe7DhEzz454i4xINdgV/uGJfA8RidXcDWcozH4DiUzr6AN8k9DoXjbzq7gS3qGH/DG05n5yD7nneArxxZ/SzElOLqFk/AOdJHvgXOM0kxF2XKefRq/gh8Pz3yTNToP4afOuXXqHnFGOxnXpGYT43BfuZTiXnkCOxXHpmYP4/AnuXPaXWDcPa8bkCrl4SzF/USUp0omL2sE5FSksHst/oYZcdD2e91QUo9NJD9WQ8lGNZA9mcdmFD/DtX5Z/0bX/cPY5vq/vh+hyC2ud8B3ecRwrb0eaD7W0LYtv4WbF9PANve14PsZ/Jnu/qZcH1c3mxnHxeuf82b7e5fQ/Xt+bKhvj1MbdGTDfcrIvo0/diYPk0Y7sXG9aeCavdhY/tyoX5kOpvQjwz0YZPZpD5sd/85lU3sP3f23dPY9L77lWPegMT2mTdY2ecsKGzPOQvrfAmaHTBfsrLM1WDZQXM1gxjmiXDs4HmiQT7mqDDsKHNUg7zNj8HsaPNjgyzm5gB23Lm5QWbzgnb2V+YFR7nk9zlJaWTLx5wkYU7UYz5UGnN78qvzoZNcTOlVn7nYf2tySqqdQyqaAAAAAElFTkSuQmCC" alt=""></a>
         </div>
 
         <div class="top-area">
@@ -94,95 +212,32 @@
                         <i class="ti-bell"></i><span></span>
                     </a>
                     <div class="dropdowns">
-                        <span>4 New Notifications</span>
+                        <span></span>
                         <ul class="drops-menu">
                             <li>
                                 <a href="notifications.html" title="">
-                                    <img src="images/resources/thumb-1.jpg" alt="">
+                                    <img src="" alt="">
                                 </a>
-                                <span class="tag green">New</span>
                             </li>
-                            <li>
-                                <a href="notifications.html" title="">
-                                    <img src="images/resources/thumb-2.jpg" alt="">
-                                    <div class="mesg-meta">
-                                        <h6>Jhon doe</h6>
-                                        <span>Hi, how r u dear ...?</span>
-                                        <i>2 min ago</i>
-                                    </div>
-                                </a>
-                                <span class="tag red">Reply</span>
-                            </li>
-                            <li>
-                                <a href="notifications.html" title="">
-                                    <img src="images/resources/thumb-3.jpg" alt="">
-                                    <div class="mesg-meta">
-                                        <h6>Andrew</h6>
-                                        <span>Hi, how r u dear ...?</span>
-                                        <i>2 min ago</i>
-                                    </div>
-                                </a>
-                                <span class="tag blue">Unseen</span>
-                            </li>
-                            <li>
-                                <a href="notifications.html" title="">
-                                    <img src="images/resources/thumb-4.jpg" alt="">
-                                    <div class="mesg-meta">
-                                        <h6>Tom cruse</h6>
-                                        <span>Hi, how r u dear ...?</span>
-                                        <i>2 min ago</i>
-                                    </div>
-                                </a>
-                                <span class="tag">New</span>
-                            </li>
-                            <li>
-                                <a href="notifications.html" title="">
-                                    <img src="images/resources/thumb-5.jpg" alt="">
-                                    <div class="mesg-meta">
-                                        <h6>Amy</h6>
-                                        <span>Hi, how r u dear ...?</span>
-                                        <i>2 min ago</i>
-                                    </div>
-                                </a>
-                                <span class="tag">New</span>
-                            </li>
+
                         </ul>
                         <a href="notifications.html" title="" class="more-mesg">view more</a>
                     </div>
                 </li>
-                <li>
-                    <a href="#" title="Messages" data-ripple=""><i class="ti-comment"></i><span>12</span></a>
-                    <div class="dropdowns">
-                        <span>5 New Messages</span>
-                        <a href="messages.html" title="" class="more-mesg">view more</a>
-                    </div>
-                </li>
-                <li><a href="#" title="Languages" data-ripple=""><i class="fa fa-globe"></i></a>
-                    <div class="dropdowns languages">
-                        <a href="#" title=""><i class="ti-check"></i>English</a>
-                        <a href="#" title="">Arabic</a>
-                        <a href="#" title="">Dutch</a>
-                        <a href="#" title="">French</a>
-                    </div>
-                </li>
             </ul>
             <div class="user-img">
-                <img src="images/resources/admin.jpg" alt="">
+                <div id="avatar_user1"></div>
                 <span class="status f-online"></span>
                 <div class="user-setting">
-                    <a href="#" title=""><span class="status f-online"></span>online</a>
-                    <a href="#" title=""><span class="status f-away"></span>away</a>
-                    <a href="#" title=""><span class="status f-off"></span>offline</a>
-                    <a href="about.html"><i class="ti-user"></i> view profile</a>
-                    <a href="#" title=""><i class="ti-pencil-alt"></i>edit profile</a>
-                    <a href="#" title=""><i class="ti-target"></i>activity log</a>
-                    <a href="#" title=""><i class="ti-settings"></i>account setting</a>
-                    <a href="#" title=""><i class="ti-power-off"></i>log out</a>
+                    <a href="#" title="" data-bs-toggle="modal" data-bs-target="#edit_userInfo"><i class="ti-user"></i>Thông tin cá nhân </a>
+                    <a href="#" title="" data-bs-toggle="modal" data-bs-target="#edit_password"><i class="ti-settings" ></i>đổi mật khẩu</a>
+                    <a href="#" title="" onclick="logOut()"><i class="ti-power-off"></i>đăng xuất</a>
                 </div>
             </div>
-            <span class="ti-menu main-menu" data-ripple=""></span>
         </div>
     </div><!-- topbar -->
+
+
 
     <section>
         <div class="gap gray-bg">
@@ -191,17 +246,19 @@
                     <div class="col-lg-12">
                         <div class="row" id="page-contents">
                             <div class="col-lg-3">
+
                                 <aside class="sidebar static">
+
                                     <div class="widget">
                                         <h4 class="widget-title">Shortcuts</h4>
                                         <ul class="naves">
                                             <li>
                                                 <i class="ti-clipboard"></i>
-                                                <a href="newsfeed.html" title="">Trang chủ</a>
+                                                <a href="home.html" title="">Trang chủ</a>
                                             </li>
                                             <li>
                                                 <i class="ti-mouse-alt"></i>
-                                                <a href="inbox.html" title="">Bạn bè</a>
+                                                <a href="friends.html" title="">Bạn bè</a>
                                             </li>
                                             <li>
                                                 <i class="ti-files"></i>
@@ -209,35 +266,57 @@
                                             </li>
 
                                         </ul>
-                                    </div><!-- Shortcuts -->
-                                    <div class="widget stick-widget">
-                                        <h4 class="widget-title">Danh sách nhóm</h4>
-                                        <ul class="followers">
-                                            <li>
-                                                <figure><img src="images/resources/friend-avatar2.jpg" alt=""></figure>
-                                                <div class="friend-meta">
-                                                    <h4><a href="time-line.html" title="">Kelly Bill</a></h4>
-                                                    <a href="#" title="" class="underline">Add Friend</a>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div><!-- who's following -->
+                                    </div>
                                 </aside>
-                            </div><!-- sidebar -->
+                            </div>
                             <div class="col-lg-6">
+
                                 <div class="central-meta">
+                                    <div class="new-postbox">
+                                        <figure>
+                                            <div onclick="location.href = 'about.html'" id="avatar_user2" ></div>
+                                        </figure>
+                                        <div class="newpst-input">
+                                            <form>
+                                                <textarea rows="2" id="contentPostUser" placeholder="Hãy viết gì đó"></textarea>
+                                                <div class="attachments">
+                                                    <ul>
+                                                        <li>
+                                                            <select id="select_status">
+                                                                <option value="1">Công khai</option>
+                                                                <option value="2">Bạn bè</option>
+                                                            </select>
+                                                        </li>
+                                                        <li>
+                                                            <input type="file" name="file[]" multiple id="image_postUser">
+                                                        </li>
+                                                        <li>
+                                                            <button type="button" onclick="createNewPost()">Đăng</button>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="showPostUserInHome">
 
-                                </div><!-- add post new box -->
-
+                                </div>
                             </div><!-- centerl meta -->
-                            <!-- friends list sidebar -->
+
+                            <div class="col-lg-3">
+                                <aside class="sidebar static">
+
+
                                 </aside>
                             </div><!-- sidebar -->
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
     </section>
+
 
     <footer>
         <div class="container">
@@ -246,7 +325,7 @@
                     <div class="widget">
                         <div class="foot-logo">
                             <div class="logo">
-                                <a href="index-2.html" title=""><img src="images/logo.png" alt=""></a>
+                                <a href="../index/about.html" title=""><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHsAAAB7CAMAAABjGQ9NAAAAY1BMVEUYd/L///8QdfI2gfMAbPEAcfK1z/p7qfeqx/nV5PwAafH09/660voAc/IAb/L4+//B1vvm7v2iwvlsoPZVlPU4hvTI2/temfXe6v3I2PscevKGsfcmfvPr9P5lnPVGjvSXufdaj3OUAAAFK0lEQVRogcWbbbeiIBCAiaRrJpiZ5VW79f9/5aJlaQEzA3R2Pu2eYz6XAYd5ZSuyXLb5ofu71pwNwuvrX3fItxf6ixjp6d02rXomhBKS39EazqX+v2B9lW5332KXm6pmSjyhS+FcKFZXeRmfvcurPrFxZ/ykr3Ls6nHspusz4cS+RGR910Rjn45o8IQ/nqKw93UiSeRBZFLvg9mno6KTR7oC1+5ml5X0I490WbkPvYtdpEy4D7ZbuGBp4cdujlkA+C7Z0XHk7ezUc6OXIlVKZhfnJETdL+HJ2aZ3C7tZ075ol4i1Re9m9m8bQ9+TyPYXz96oOPqehKsNln1IopIHSQ44dhcfreEdhv0VtBH+wf6Cwh/wD7W/szffQmv4+4F7Y/+qr6EZU78udtN6f1ycDQ6V8+e8bezsYu1lUrSXmGW8r69t2+p/ZYmQ0ujZyXVhZZ89DClPRP1zaMqLfm1R7MqyOaXdz3ndmh4WZxs7pZ8zqepbY7orisa48mR+q83YDd2Sqnpju6R2RjZXsy1/sYsjVeOSHexuiZnNxPH1kxc7pXopot5ayVY2y15af7JLIpmJq4NsZzP2dCCf7IqocXF0ou1sUb2zT5J20GQNRF1WNpeT3z6xr1Sr4tprt87lpLEHe0/UeHID0A42U/sFu6Ytm9cunx9iy3rOPhEtWpZDaBebJacZ+0hc9hpctpP92PGR3RDNigJ3281mWfNkd8STliHyCk626Cb2rqehWQujV4UzN9PvHuycqHJh8Hcfi81vk3ROWzUe1oFNNafmKEMbiWuWqEnc7xwNq2aXVJULo00rKkpepi9Hdk78uDk3pTKKiuTiJvnIpqrcfNSIMcWgdLba1URXifemU7amvYXre5Cttm6n2vCztemcEYMKri9CtkqpoYiRfaO+RaWaTd5uI5t8/+sNZ6ue6hkb2cTtHk8Nu1C3OxZbk7fkOCgOW1solv83ds4O5Ig7ElsdGPXujrfujv2RQ+5IbPnHruQfRWLzK6Na83jsmvx1R2N7kOOxcaKSuWSm+7vNkqVE+lvEbbMQU1CSLx/Z7Ndx2AkUc5qEfoajsXeYeB7xiA8bEWZxzPftw4adX/19I+yaDxv2obRdQ9hzH/YPeEVpe464x3zYsDr1PYa4v33Y4EuH+xvht3iwS/it2m9B+GsebEQCR/trCD/Vgw2XXQY/FeGfe7DhEzz454i4xINdgV/uGJfA8RidXcDWcozH4DiUzr6AN8k9DoXjbzq7gS3qGH/DG05n5yD7nneArxxZ/SzElOLqFk/AOdJHvgXOM0kxF2XKefRq/gh8Pz3yTNToP4afOuXXqHnFGOxnXpGYT43BfuZTiXnkCOxXHpmYP4/AnuXPaXWDcPa8bkCrl4SzF/USUp0omL2sE5FSksHst/oYZcdD2e91QUo9NJD9WQ8lGNZA9mcdmFD/DtX5Z/0bX/cPY5vq/vh+hyC2ud8B3ecRwrb0eaD7W0LYtv4WbF9PANve14PsZ/Jnu/qZcH1c3mxnHxeuf82b7e5fQ/Xt+bKhvj1MbdGTDfcrIvo0/diYPk0Y7sXG9aeCavdhY/tyoX5kOpvQjwz0YZPZpD5sd/85lU3sP3f23dPY9L77lWPegMT2mTdY2ecsKGzPOQvrfAmaHTBfsrLM1WDZQXM1gxjmiXDs4HmiQT7mqDDsKHNUg7zNj8HsaPNjgyzm5gB23Lm5QWbzgnb2V+YFR7nk9zlJaWTLx5wkYU7UYz5UGnN78qvzoZNcTOlVn7nYf2tySqqdQyqaAAAAAElFTkSuQmCC" alt=""></a>
                             </div>
                             <p>
                                 The trio took this simple idea and built it into the world’s leading carpooling platform.
@@ -324,75 +403,15 @@
         </div>
     </div>
 </div>
-<div class="side-panel">
-    <h4 class="panel-title">General Setting</h4>
-    <form method="post">
-        <div class="setting-row">
-            <span>use night mode</span>
-            <input type="checkbox" id="nightmode1"/>
-            <label for="nightmode1" data-on-label="ON" data-off-label="OFF"></label>
-        </div>
-        <div class="setting-row">
-            <span>Notifications</span>
-            <input type="checkbox" id="switch22" />
-            <label for="switch22" data-on-label="ON" data-off-label="OFF"></label>
-        </div>
-        <div class="setting-row">
-            <span>Notification sound</span>
-            <input type="checkbox" id="switch33" />
-            <label for="switch33" data-on-label="ON" data-off-label="OFF"></label>
-        </div>
-        <div class="setting-row">
-            <span>My profile</span>
-            <input type="checkbox" id="switch44" />
-            <label for="switch44" data-on-label="ON" data-off-label="OFF"></label>
-        </div>
-        <div class="setting-row">
-            <span>Show profile</span>
-            <input type="checkbox" id="switch55" />
-            <label for="switch55" data-on-label="ON" data-off-label="OFF"></label>
-        </div>
-    </form>
-    <h4 class="panel-title">Account Setting</h4>
-    <form method="post">
-        <div class="setting-row">
-            <span>Sub users</span>
-            <input type="checkbox" id="switch66" />
-            <label for="switch66" data-on-label="ON" data-off-label="OFF"></label>
-        </div>
-        <div class="setting-row">
-            <span>personal account</span>
-            <input type="checkbox" id="switch77" />
-            <label for="switch77" data-on-label="ON" data-off-label="OFF"></label>
-        </div>
-        <div class="setting-row">
-            <span>Business account</span>
-            <input type="checkbox" id="switch88" />
-            <label for="switch88" data-on-label="ON" data-off-label="OFF"></label>
-        </div>
-        <div class="setting-row">
-            <span>Show me online</span>
-            <input type="checkbox" id="switch99" />
-            <label for="switch99" data-on-label="ON" data-off-label="OFF"></label>
-        </div>
-        <div class="setting-row">
-            <span>Delete history</span>
-            <input type="checkbox" id="switch101" />
-            <label for="switch101" data-on-label="ON" data-off-label="OFF"></label>
-        </div>
-        <div class="setting-row">
-            <span>Expose author name</span>
-            <input type="checkbox" id="switch111" />
-            <label for="switch111" data-on-label="ON" data-off-label="OFF"></label>
-        </div>
-    </form>
-</div><!-- side panel -->
+
 
 <script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="js/main.min.js"></script>
 <script src="js/script.js"></script>
 <script src="js/map-init.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA8c55_YHLvDHGACkQscgbGLtLRdxBDCfI"></script>
-
+<script src="../auth/login.js"></script>
+<script src="about.js"></script>
 </body>
 
 </html>
