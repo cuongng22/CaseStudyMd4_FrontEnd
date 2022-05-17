@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="css/color.css">
     <link rel="stylesheet" href="css/responsive.css">
 
+
 </head>
 <body>
 <div class="modal fade" id="edit_password" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -262,14 +263,14 @@
                                             </li>
                                             <li>
                                                 <i class="ti-files"></i>
-                                                <a href="fav-page.html" title="">Nhóm</a>
+                                                <a class="active" onclick="showAllPage()" title="" data-ripple="">Groups</a>
                                             </li>
 
                                         </ul>
                                     </div>
                                 </aside>
                             </div>
-                            <div class="col-lg-6">
+                            <div class="col-lg-6" id="group">
 
                                 <div class="central-meta">
                                     <div class="new-postbox">
@@ -412,6 +413,7 @@
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA8c55_YHLvDHGACkQscgbGLtLRdxBDCfI"></script>
 <script src="../auth/login.js"></script>
 <script src="about.js"></script>
+<script src="groups.js"></script>
 </body>
 
 </html>

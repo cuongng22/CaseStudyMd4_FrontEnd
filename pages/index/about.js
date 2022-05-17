@@ -17,7 +17,7 @@ function showUserInfo() {
             name = userInfo.name
             let img  = `<img src="http://localhost:8080/image/${userInfo.avatar}" width="2000" height="100" >`
             let img123  = `<img src="http://localhost:8080/image/${userInfo.avatar}" width="40" height="40">`
-            let bgr  = `<img src="http://localhost:8080/image/${userInfo.background}" width="400"  >`
+            let bgr  = `<img src="http://localhost:8080/image/${userInfo.background}" width= "50%"  >`
             $(`#userInfo-name`).html(name);
             $(`#avatar-userinfo`).html(img)
             $(`#background-userInfo`).html(bgr)
@@ -27,7 +27,7 @@ function showUserInfo() {
             $(`#show_Bgr`).html(bgr)
             $(`#avatar_user1`).html(img123)
             $(`#avatar_user2`).html(img123)
-            $(`#name`).val(name)
+            $(`#name`).val(userInfo.name)
             $(`#age`).val(userInfo.age)
             $(`#address`).val(userInfo.address)
         }
@@ -63,7 +63,7 @@ function editUserInfo() {
             location.href = '../index/about.html'
         },
         error : function () {
-            alert("oh no")
+            showError
         }
     })
 }
@@ -93,23 +93,23 @@ function password() {
         },
         success : function () {
             $.ajax({
-            type : 'POST',
-            url : `http://localhost:8080/password/${currentUser.id}`,
-            data : JSON.stringify(gg),
-            headers : {
-                'Accept' : 'application/json',
-                'Content-Type' : 'application/json'
-            },
-            success : function () {
-                alert("Done")
-                $(`#oldpassword`).val(null);
-                $(`#password`).val(null);
-                $(`#newpassword`).val(null)
-            },
-            error : function () {
-                alert("Mat kahu ko khop")
-            }
-        })
+                type : 'POST',
+                url : `http://localhost:8080/password/${currentUser.id}`,
+                data : JSON.stringify(gg),
+                headers : {
+                    'Accept' : 'application/json',
+                    'Content-Type' : 'application/json'
+                },
+                success : function () {
+                    alert("Done")
+                    $(`#oldpassword`).val(null);
+                    $(`#password`).val(null);
+                    $(`#newpassword`).val(null)
+                },
+                error : function () {
+                    alert("Mat kahu ko khop")
+                }
+            })
         },
         error : function () {
             alert("mk cu sai")
@@ -131,13 +131,7 @@ function editAvatar() {
         headers : {
             "Authorization" : 'Bearer ' + currentUser.token
         },
-        success : function () {
-            alert("done");
-            location.href = "../index/about.html"
-        },
-        error : function () {
-            alert("error")
-        }
+        success : showAllPostUser()
     })
 }
 function editBackground() {
@@ -155,11 +149,8 @@ function editBackground() {
             "Authorization" : 'Bearer ' + currentUser.token
         },
         success : function () {
-            alert("done");
-            location.href = "../index/about.html"
-        },
-        error : function () {
-            alert("error")
+            alert("Thay đổi thành công!")
+            showAllPostUser()
         }
     })
 }
@@ -174,7 +165,7 @@ function showAllPostUser() {
         success : function (post) {
             let content = '';
             for (let i = 0; i < post.length; i++) {
-                 idComment = "commentPostUser"+`${i}`;
+                idComment = "commentPostUser"+`${i}`;
                 let allImg = '';
                 for (let j = 0; j < post[i].image.length; j++) {
                     allImg += `<img src="http://localhost:8080/image/${((post[i].image)[j]).image}" width="300" , height="100" alt=""/>`
@@ -182,7 +173,7 @@ function showAllPostUser() {
                 let comment = ``;
                 for (let j = 0; j < post[i].commentPostUsers.length; j++) {
                     let hour = (post[i].commentPostUsers)[j].dateCreated;
-                        comment +=`<div class="comet-avatar">
+                    comment +=`<div class="comet-avatar">
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t<img src="http://localhost:8080/image/${(post[i].commentPostUsers)[j].userInfo.avatar}" alt="">
 \t\t\t\t\t\t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t\t\t\t\t\t<div class="we-comment">
@@ -192,6 +183,14 @@ function showAllPostUser() {
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<a class="we-reply" href="#" title="Reply"><i class="fa fa-reply"></i></a>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t<p>${(post[i].commentPostUsers)[j].content}</p>
+ <ul>
+                                                                <li>
+                                            <span class="like" data-toggle="tooltip" title="like">
+                                           <i onclick="likeComment(${currentUser.id},${(post[i].commentPostUsers)[j].id})" class="ti-heart"  ></i>
+                                            <ins >${(post[i].totalLikeComment)[j]}</ins>
+                                                                    </span>
+                                                                </li>
+                                                            </ul>
 \t\t\t\t\t\t\t\t\t\t\t\t\t</div>
 <br>
 `
@@ -205,7 +204,7 @@ function showAllPostUser() {
                                                         <img src="http://localhost:8080/image/${avatarUser}" alt="">
                                                     </figure>
                                                     <div class="friend-name">
-                                                        <ins><a href="time-line.html" title="">${name}</a href="time-line.html" title=""></ins>
+                                                        <ins><a href="" title="">${name}</a href="time-line.html" title=""></ins>
                                                         <span>published: ${post[i].dateCreater}</span>
                                                         <span id="status_post">${post[i].statusPostUser?.name}</span>
                                                     </div>
@@ -229,13 +228,11 @@ function showAllPostUser() {
                                                         <ins>${post[i].totalComment}</ins>
                                         </span>
                                                                 </li>
-
                                                                 <li>
                                                                 </li>
                                                             </ul>
                                                         </div>
                                                         <div class="description">
-
                                                         </div>
                                                     </div>
                                                 </div>
@@ -274,6 +271,20 @@ function likePostUser(userId, postUserId) {
     $.ajax({
         type : 'POST',
         url : `http://localhost:8080/like_postUser/${userId}/${postUserId}`,
+        headers: {
+            "Authorization" : 'Bearer ' + currentUser.token
+        },
+        success : function () {
+            showAllPostUserFriend()
+            showAllPostUser()
+        }
+    })
+}
+
+function likeComment(userId, commentId) {
+    $.ajax({
+        type : 'POST',
+        url : `http://localhost:8080/likeCommentUser/${userId}/${commentId}`,
         headers: {
             "Authorization" : 'Bearer ' + currentUser.token
         },
@@ -361,7 +372,7 @@ function friends() {
                                                                 <a href="time-line.html" title=""><img src="http://localhost:8080/image/${list[i].avatar}" alt=""></a>
                                                             </figure>
                                                             <div class="pepl-info">
-                                                                <h4><a href="time-line.html" title="">${list[i].name}</a></h4>
+                                                                <h4><a href="user_wall.html" title="">${list[i].name}</a></h4>
                                                                 <span>Codegym</span>
                                                                 <button type="button" onclick="deleteFriend(${list[i].user.id})">Huy kb</button>
                                                             </div>
@@ -374,6 +385,7 @@ function friends() {
         }
     })
 }
+
 
 function friendRequest() {
     $.ajax({
@@ -463,6 +475,14 @@ function showAllPostUserFriend() {
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<a class="we-reply" href="#" title="Reply"><i class="fa fa-reply"></i></a>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t<p>${(post[i].commentPostUsers)[j].content}</p>
+ <ul>
+                                                                <li>
+                                            <span class="like" data-toggle="tooltip" title="like">
+                                           <i onclick="likeComment(${currentUser.id},${(post[i].commentPostUsers)[j].id})" class="ti-heart"  ></i>
+                                            <ins >${(post[i].totalLikeComment)[j]}</ins>
+                                                                    </span>
+                                                                </li>
+                                                            </ul>
 \t\t\t\t\t\t\t\t\t\t\t\t\t</div>
 <br>
 `
@@ -499,14 +519,9 @@ function showAllPostUserFriend() {
                                         <i class="fa fa-comments-o"></i>
                                                         <ins>${post[i].totalComment}</ins>
                                         </span>
-                                                                </li>
-
-                                                                <li>
-                                                                </li>
                                                             </ul>
                                                         </div>
                                                         <div class="description">
-
                                                         </div>
                                                     </div>
                                                 </div>
@@ -541,6 +556,39 @@ function showAllPostUserFriend() {
         }
     })
 }
+function notification() {
+    $.ajax({
+        type : 'get',
+        url : `http://localhost:8080/notification/${currentUser.id}`,
+        headers: {
+            "Authorization" : 'Bearer ' + currentUser.token
+        },
+        success : function (abc) {
+            let content = ``;
+            for (let  i = 0 ; i < abc.length; i ++) {
+                content += `<span></span>
+                        <ul class="drops-menu">
+                            <li>
+                                <a href="notifications.html" title="">
+                                    <img src="http://localhost:8080/image/${abc[i].fromUser.avatar}" alt="">
+                                    <div class="mesg-meta">
+                                        <h6 >${abc[i].fromUser.name}</h6>
+                                        <span>${abc[i].content}</span>
+                                        <i>${abc[i].dateCreated}</i>
+                                    </div>
+                                </a>
+                            </li>
+
+                        </ul>
+                        <a href="notifications.html" title="" class="more-mesg">view more</a>`
+            }
+            $(`#showNoti`).html(content)
+            $(`#totalNoti`).html(abc.length)
+        }
+
+    })
+}
+notification()
 
 function logOut() {
     window.localStorage.clear();

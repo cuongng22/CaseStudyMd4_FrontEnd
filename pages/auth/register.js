@@ -18,13 +18,15 @@ function register() {
             'Content-Type' : 'application/json'
         },
         success : function () {
-           alert("Tạo thành công")
+            showSuccessMessage('Đăng ký thành công!')
+           // alert("Tạo thành công")
             $(`#signup_username`).val(null);
             $(`#signup_password`).val(null);
             $(`#confirmPassword`).val(null);
         },
         error : function () {
-            alert("Tài khoản đã tồn tại hoặc mật khẩu ko khớp")
+            // alert("Tài khoản đã tồn tại hoặc mật khẩu ko khớp")
+            showErrorMessage('Đăng ký thất bại!')
         }
     })
 }

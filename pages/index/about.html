@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="" />
     <meta name="keywords" content="" />
-    <title>Bo cuong c12</title>
+    <title>C1221H1 Social Network</title>
     <link rel="icon" href="images/fav.png" type="image/png" sizes="16x16">
     <link rel="stylesheet" href="css/main.min.css">
     <link rel="stylesheet" href="css/style.css">
@@ -209,19 +209,10 @@
                 <li><a href="newsfeed.html" title="Home" data-ripple=""><i class="ti-home"></i></a></li>
                 <li>
                     <a href="#" title="Notification" data-ripple="">
-                        <i class="ti-bell"></i><span></span>
+                        <i class="ti-bell"></i><span id="totalNoti"></span>
                     </a>
-                    <div class="dropdowns">
-                        <span></span>
-                        <ul class="drops-menu">
-                            <li>
-                                <a href="notifications.html" title="">
-                                    <img src="" alt="">
-                                </a>
-                            </li>
+                    <div class="dropdowns" id="showNoti">
 
-                        </ul>
-                        <a href="notifications.html" title="" class="more-mesg">view more</a>
                     </div>
                 </li>
             </ul>
@@ -239,7 +230,7 @@
 
     <section>
         <div class="feature-photo">
-                <div id="background-userInfo"></div>
+                <figure id="background-userInfo"></figure>
             <form class="edit-phto">
                 <i class="fa fa-camera-retro"></i>
                 <label class="fileContainer" data-bs-toggle="modal" data-bs-target="#edit_background">
@@ -276,7 +267,7 @@
                                 <li>
                                     <a class="" href="time-line.html" title="" data-ripple="">trang chủ</a>
                                     <a class="" href="../index/friends.html" title="" data-ripple="">bạn bè</a>
-                                    <a class="" href="timeline-videos.html" title="" data-ripple="">nhóm</a>
+                                    <a class="" href="groups.html" title="" data-ripple="">nhóm</a>
                                     <a class="" href="timeline-friends.html" title="" data-ripple="">bài viết</a>
 
                                 </li>
@@ -311,7 +302,7 @@
                                             </li>
                                             <li>
                                                 <i class="ti-files"></i>
-                                                <a href="fav-page.html" title="">Nhóm</a>
+                                                <a href="groups.html" title="">Nhóm</a>
                                             </li>
 
                                         </ul>
@@ -461,6 +452,7 @@
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA8c55_YHLvDHGACkQscgbGLtLRdxBDCfI"></script>
 <script src="../auth/login.js"></script>
 <script src="about.js"></script>
+<script src="friends.js"></script>
 </body>
 
 </html>

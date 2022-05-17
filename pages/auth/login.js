@@ -24,7 +24,7 @@ function login123() {
                 },
                 success: function (userInfo) {
                     if (userInfo.id % 1 == 0)  {
-                        location.href = '../index/about.html'
+                        location.href = '../index/home.html'
                     } else {
                         location.href = '../auth/signUpUserInfo.html'
                     }
@@ -32,7 +32,7 @@ function login123() {
             })
         },
         error : function () {
-            alert("Tài khoản hoặc mật khẩu không chính xác!")
+            showErrorMessage('Login failed!')
         }
     })
 }
